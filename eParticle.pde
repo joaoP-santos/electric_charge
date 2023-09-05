@@ -11,6 +11,7 @@ class eParticle {
   String content;
   float atomSize;
   float valency;
+  float angle;
   eParticle(float x, float y, float size, String type, Particle atom, float atomSize, float valency) {
     particle = system.makeParticle(x, y);
     this.valency = valency;
@@ -29,6 +30,7 @@ class eParticle {
         this.pColor = color(0, 255, 0);
         this.content = "-";
     }
+    angle = random(0, 360);
   }
   
   void show() {
@@ -36,7 +38,7 @@ class eParticle {
     float vibrationX = random(0, 5);
     float vibrationY = random(0, 5);
     if (this.type == "electron") {
-      float angle = random(0, 360);
+      angle+= random(0.01, 0.3);
       vibrationX = 0;
       vibrationY = 0;
       this.x = cos(angle)* this.atomSize * 1.3 + cos(angle)*this.valency* size/0.5; 
